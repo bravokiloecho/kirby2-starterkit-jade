@@ -1,5 +1,61 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# IGNORE MAP files #
+# ################ #
+.map
+.src.coffee
+
+# OS generated files #
+######################
 .DS_Store
-/site/accounts
-/assets/avatars
-/thumbs/*
-/site/cache/*
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compiled resources
+assets/css/
+assets/js/
+
+# KIRBY THINGS
+site/cache/*
+!site/cache/.gitkeep
+thumbs/*
+!thumbs/.gitkeep
+content/*
+content/*/*
+content/*/*/*
+!content/.gitkeep
+static/
+
+
+# NODE PACKAGES
+node_modules/
+.sass-cache/
