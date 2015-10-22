@@ -1,0 +1,69 @@
+mixin signature
+	
+
+
+mixin legacyWarning( $message )
+	aside#legacy-warning
+		p.message=message
+
+		ul.new-browser-list
+			li
+				a(href="https://www.google.com/intl/en/chrome/browser") chrome
+			li
+				a(href="http://support.apple.com/en_GB/downloads/#safari") safari
+			li
+				a(href="http://www.mozilla.org/en-US/firefox/new") firefox
+
+
+mixin liveReload()
+	script(src="http://127.0.0.1:35729/livereload.js")
+
+
+//- browserWatch
+mixin browserSync()
+	script.
+		//<![CDATA[
+		document.write("<script async src='http://HOST:4001/browser-sync/browser-sync-client.2.7.13.js'><\/script>".replace("HOST", location.hostname));
+		//]]>
+
+mixin openGraph( $title, $url, $description )
+	meta(name='application-name', content=title)
+	meta(property='og:title', content=title)
+	meta(property='og:type', content='website')
+	meta(property='og:url', content=url)
+	meta(property='og:image', content='/static/gfx/meta/og_share.jpg' + cachebust)
+	meta(property='og:description', content=description)
+
+mixin twitterMeta(title,url,description)
+	meta(name='twitter:card', content='summary')
+	meta(name='twitter:url', content=url)
+	meta(name='twitter:title', content=title)
+	meta(name='twitter:image', content='/static/gfx/meta/og_share.jpg' + cachebust)
+	meta(name='twitter:description', content=description)
+
+mixin altFavicons
+
+	if ( production )
+		link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico?v3' + cachebust)
+	else
+		link(rel='shortcut icon', type='image/x-icon', href='/public/favicon.ico?v3' + cachebust)
+
+	link(rel='apple-touch-icon-precomposed', sizes='180x180', href='#{assets}gfx/meta/Icon-60@3x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='152x152', href='#{assets}gfx/meta/Icon-76@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='144x144', href='#{assets}gfx/meta/Icon-72@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='120x120', href='#{assets}gfx/meta/Icon-60@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='120x120', href='#{assets}gfx/meta/Icon-Small-40@3x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='114x114', href='#{assets}gfx/meta/Icon@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='100x100', href='#{assets}gfx/meta/Icon-Small-50@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='87x87', href='#{assets}gfx/meta/Icon-Small@3x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='80x80', href='#{assets}gfx/meta/Icon-Small-40@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='76x76', href='#{assets}gfx/meta/Icon-76.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='72x72', href='#{assets}gfx/meta/Icon-72.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='60x60', href='#{assets}gfx/meta/Icon-60.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='58x58', href='#{assets}gfx/meta/Icon-Small@2x.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='57x57', href='#{assets}gfx/meta/Icon.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='50x50', href='#{assets}gfx/meta/Icon-Small-50.png' + cachebust)
+	link(rel='apple-touch-icon-precomposed', sizes='29x29', href='#{assets}gfx/meta/Icon-Small.png' + cachebust)
+
+	meta(name='msapplication-TileColor', content='#ffffff')
+	meta(name='msapplication-TileImage', content='#{assets}gfx/meta/Icon-72@2x.png' + cachebust)

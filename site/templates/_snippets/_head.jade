@@ -1,0 +1,75 @@
+
+head
+	//- Meta things
+	meta(http-equiv='Content-Language', content='en')
+	meta(name='author', content='Elwyn.co')
+	title!=$pageTitle
+	meta(name='description', content= $pageDescription)
+	meta(http-equiv='Keywords', content= $pageKeywords)
+
+	//- Block robots is dev
+	if $isDev
+		meta(name="robots", content="noindex")
+
+	//- setting for mobiles
+	meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale = 1.0, maximum-scale = 1.0', id='meta-viewport')
+	meta(name='apple-mobile-web-app-capable', content='yes')
+	meta(name='apple-mobile-web-app-capable', content='yes')
+	meta(name='apple-mobile-web-app-status-bar-style', content='black')
+
+	//- Meta icons
+	link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='180x180', href= $absoluteAssetPath . 'gfx/meta/Icon-60@3x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='152x152', href= $absoluteAssetPath . 'gfx/meta/Icon-76@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='144x144', href= $absoluteAssetPath . 'gfx/meta/Icon-72@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='120x120', href= $absoluteAssetPath . 'gfx/meta/Icon-60@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='120x120', href= $absoluteAssetPath . 'gfx/meta/Icon-Small-40@3x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='114x114', href= $absoluteAssetPath . 'gfx/meta/Icon@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='100x100', href= $absoluteAssetPath . 'gfx/meta/Icon-Small-50@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='87x87', href= $absoluteAssetPath . 'gfx/meta/Icon-Small@3x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='80x80', href= $absoluteAssetPath . 'gfx/meta/Icon-Small-40@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='76x76', href= $absoluteAssetPath . 'gfx/meta/Icon-76.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='72x72', href= $absoluteAssetPath . 'gfx/meta/Icon-72.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='60x60', href= $absoluteAssetPath . 'gfx/meta/Icon-60.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='58x58', href= $absoluteAssetPath . 'gfx/meta/Icon-Small@2x.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='57x57', href= $absoluteAssetPath . 'gfx/meta/Icon.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='50x50', href= $absoluteAssetPath . 'gfx/meta/Icon-Small-50.png' . $v)
+	link(rel='apple-touch-icon-precomposed', sizes='29x29', href= $absoluteAssetPath . 'gfx/meta/Icon-Small.png' . $v)
+
+	meta(name='msapplication-TileColor', content='#ffffff')
+	meta(name='msapplication-TileImage', content= $absoluteAssetPath . 'gfx/meta/Icon-72@2x.png' . $v)
+
+
+	//- CSS
+	!=$css
+
+	//- JS Vars
+	script.
+		var assetPath = window.assetPath = '#{$absoluteAssetPath}';
+		var isLocal = window.isLocal = #{$isLocal};
+		var isDev = window.isDev = #{$isDev};
+		var currentPage = window.currentPage = '#{$currentPage}';
+		var siteURL = window.siteURL = '#{$siteURL}';
+
+		// Page paths for routing
+		var pathNames = window.pathNames = {
+
+		};
+
+	//- JS Assets
+	//- Output CDN jQuery if not local, otherwise its included in JS call
+	//- and IE 8 polyfills
+	if !$isDev
+		<!--[if lt IE 9]>
+		  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script>window.jQuery || document.write('<script src="#{$jQueryPath}jquery_1.js"><\/script>')</script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		    <script>window.jQuery || document.write('<script src="#{$jQueryPath}jquery_2.js"><\/script>')</script>
+		<!--<![endif]-->
+	
+	//- The rest of the JS assets
+	!=$js
+	

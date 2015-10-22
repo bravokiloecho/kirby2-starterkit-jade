@@ -1,0 +1,39 @@
+:php
+	$isHome = $page->isHomePage();
+	//- Define title & description & keywords
+	if ( $isHome ) {
+		$pageTitle = $site->title()->escape();
+		$pageDescription = $site->description()->escape();
+	} else {
+		$pageTitle = $site->title()->escape() . ' | ' . $page->title()->escape();
+		$pageDescription = $page->description()->escape();
+	}
+	$pageKeywords = $site->keywords()->escape();
+	
+	//- Cache buster
+	$v = '?v' . date("Y-m-d",time());
+
+	// Config vars
+	$siteURL = $site->url();
+	$siteSubdirectory = $site->subdirectory()->html();
+	$isLive = c::get('isLive');
+	$isLocal = c::get('isLocal');
+	$isDev = c::get('isDev');
+
+	// Define paths to assets
+	$assetsFolderPath = 'assets/';
+	$absoluteAssetPath = $siteURL . '/' . $assetsFolderPath;
+
+	$gfxPath = url( $assetsFolderPath . 'gfx/');
+	$jQueryPath = url( $assetsFolderPath . 'jquery/');
+	if ( $isDev ) {
+		$css = css( $assetsFolderPath . 'css/mouse/index.css');
+		$js = js( array( $assetsFolderPath . 'jquery/jquery_2.js', $assetsFolderPath . 'js/plugins.js', $assetsFolderPath . 'js/mouse/scripts.js') );
+	} else {
+		$css = css( $assetsFolderPath . 'css/min/index.css');
+		$js = js( $assetsFolderPath . 'js/min/scripts.js');
+	}
+
+	// Vars for JS
+	$currentPage = $page->template();
+	
