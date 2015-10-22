@@ -1,0 +1,25 @@
+{
+  "name": "setup_assemble",
+  "version": "0.0.0",
+  "description": "setupr for barbican site",
+  "main": "photos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node photos.js"
+  },
+  "author": "elwyn.co",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-image-resize": "^0.4.0",
+    "grunt-modernizr": "^1.0.0",
+    "grunt-php": "^1.5.1",
+    "grunt-svgmin": "^2.0.1"
+  }
+}
